@@ -14,7 +14,6 @@ function initMap() {
     directionsDisplay = new google.maps.DirectionsRenderer();
     // insira seu codigo abaixo.
     
-    
     // nao remova a linha abaixo.
     directionsDisplay.setMap(map);
 }
