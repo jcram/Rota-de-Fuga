@@ -6,6 +6,6 @@
   Obs: as variaveis origem e destino são objetos com os atributos longitude e latitude.
   Para acessar esses atributos basta fazer origem.longitude ou origem.latitude.
 */
-function criarRota(origem, destino){
+function criarRota(origem, destino) {
 
 }

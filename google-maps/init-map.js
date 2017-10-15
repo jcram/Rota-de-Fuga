@@ -4,6 +4,8 @@
   para colocar o ponto no mapa. Verifique o link abaixo para mais informações:
   https://developers.google.com/maps/documentation/javascript/adding-a-google-map?hl=pt-br
 */
-function initMap(){
+var map;
+
+function initMap() {
 
 }

@@ -4,11 +4,14 @@
   Verifique o link abaixo para mais informações:
   https://developers.google.com/maps/documentation/javascript/geolocation?hl=pt-br
 */
-function posicaoAtual(){
+function posicaoAtual() {
 
 
-  // após ter a latitude e a longitude em mãos. substitua os valores abaixo.
-  var posicao = {latitude: 0, longitude: 0};
+    // após ter a latitude e a longitude em mãos. substitua os valores abaixo.
+    var posicao = {
+        latitude: 0,
+        longitude: 0
+    };
 
-  return posicao;
+    return posicao;
 }

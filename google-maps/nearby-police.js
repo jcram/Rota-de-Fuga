@@ -10,10 +10,23 @@
   Obs: a variavel pos é um objeto com os atributos longitude e latitude.
   Para acessar esses atributos basta fazer pos.latitude ou pos.longitude, caso necessário.
 */
-function nearbyPolices(pos){
+var police;
 
-  // após ter a latitude e a longitude em mãos. substitua os valores abaixo.
-  var posicao = {latitude: 0, longitude: 0};
+function nearbyPolices(pos) {
+    var position = new google.maps.LatLng(pos.latitude, pos.longitude);
+    var request = {
+        location: position,
+        type: "police",
+        rankBy: google.maps.places.RankBy.DISTANCE
+    }
+    var service = new google.maps.places.PlacesService(map);
+    service.nearbySearch(request, callback);
+}
 
-  return posicao;
+function callback(results, status) {
+    if (status == google.maps.places.PlacesServiceStatus.OK) { 
+        var latitude = results[0].geometry.location.lat();
+        var longitude = results[0].geometry.location.lng();
+        police = {latitude: results[0].geometry.location.lat(), longitude: results[0].geometry.location.lng()};
+    }
 }
