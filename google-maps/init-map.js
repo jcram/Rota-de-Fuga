@@ -5,7 +5,16 @@
   https://developers.google.com/maps/documentation/javascript/adding-a-google-map?hl=pt-br
 */
 var map;
+var directionsDisplay;
+var directionsService;
 
 function initMap() {
-
+    
+    directionsService = new google.maps.DirectionsService();
+    directionsDisplay = new google.maps.DirectionsRenderer();
+    // insira seu codigo abaixo.
+    
+    
+    // nao remova a linha abaixo.
+    directionsDisplay.setMap(map);
 }
