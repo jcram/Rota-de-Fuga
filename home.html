@@ -1,19 +1,47 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Geolocation</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+<html lang="en">
+
+<head>
+    <title>Rota de Fuga</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/style.css"/>
-    <script src="google-maps/init-map.js"></script>
-    <script src="google-maps/posicao-atual.js"></script>
-    <script src="google-maps/rota-de-fuga.js"></script>
-  </head>
-  <body>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/google-maps.js"></script>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+                <a id="logo" class="navbar-brand" href="#myPage">
+                    <img src="images/logo-rota-de-fuga.png" width="40px" height="auto" style="float:left;position:relative;bottom:10px;"/>
+                    <span style="margin-left:20px;">ROTA DE FUGA</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Home</a></li>
+                    <li class="menu-fui-roubado"><a href="#">Fui Roubado!</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Add Google Maps -->
     <div id="map"></div>
-      <input id="btn-rota-de-fuga" type="button" value="!" onclick="rotaDeFuga();"/>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXUmL8jNsy6Z7a-xhsSx_caGVDhaN3aAw&libraries=places&callback=initMap">
+    <button id="btn-rota-de-fuga" type="button" class="btn btn-danger" onclick="rotaDeFuga();">!</button>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXUmL8jNsy6Z7a-xhsSx_caGVDhaN3aAw&libraries=places&callback=initMap">
     </script>
-  </body>
+</body>
+
 </html>
