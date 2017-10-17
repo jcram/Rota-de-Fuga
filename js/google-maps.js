@@ -7,11 +7,15 @@
 var map;
 var directionsDisplay;
 var directionsService;
+var ultimaPosicaoConhecida;
+var timeRotaDeFuga;
 
 function initMap() {
 
     directionsService = new google.maps.DirectionsService();
-    directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay = new google.maps.DirectionsRenderer({
+        suppressMarkers: true
+    });
     // insira seu codigo abaixo.
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
@@ -26,15 +30,14 @@ function initMap() {
 }
 
 function rotaDeFuga() {
+    timeRotaDeFuga = new Date().getMilliseconds();
     posicaoAtual();
     nearbyPolices();
 }
 
 function nearbyPolices() {
-    var center = map.getCenter();
-    var origem = new google.maps.LatLng(center.lat(), center.lng());
     var request = {
-        location: origem,
+        location: ultimaPosicaoConhecida,
         type: "police",
         rankBy: google.maps.places.RankBy.DISTANCE
     }
@@ -43,7 +46,7 @@ function nearbyPolices() {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
             var destino = new google.maps.LatLng(results[0].geometry.location.lat(),
                 results[0].geometry.location.lng());
-            criarRota(origem, destino);
+            criarRota(ultimaPosicaoConhecida, destino);
         }
     });
 }
@@ -57,19 +60,45 @@ function criarRota(origem, destino) {
     directionsService.route(request, function (result, status) {
         if (status == 'OK') {
             directionsDisplay.setDirections(result);
+            var o = result.routes[0].legs[0].start_location;
+            createMarker({
+                lat: o.lat(),
+                lng: o.lng()
+            }, map, "images/point-icon.svg");
+            var d = result.routes[0].legs[0].end_location;
+            createMarker({
+                lat: d.lat(),
+                lng: d.lng()
+            }, map, "images/police-icon.svg");
+            var time = new Date().getMilliseconds() - timeRotaDeFuga;
+            if (time < 700) {
+                setTimeout(closeModal, 2000 - time);
+            }else{
+                closeModal();
+            }
         } else {
             alert('Desculpe, nao foi possivel desenhar a Rota');
         }
     });
 }
 
+function closeModal() {
+    $("#myModal").modal("hide");
+}
+
+function createMarker(position, map, icon) {
+    var markerDestino = new google.maps.Marker({
+        position: position,
+        map: map,
+        icon: icon
+    });
+}
+
 function posicaoAtual() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
-            map.setCenter({
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            });
+            ultimaPosicaoConhecida = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            map.setCenter(ultimaPosicaoConhecida);
         }, function () {
             handleLocationError(true, map);
         });

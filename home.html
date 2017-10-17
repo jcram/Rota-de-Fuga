@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="images/logo-rota-de-fuga.png">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -39,7 +40,21 @@
     </nav>
     <!-- Add Google Maps -->
     <div id="map"></div>
-    <button id="btn-rota-de-fuga" type="button" class="btn btn-danger" onclick="rotaDeFuga();">!</button>
+    <button id="btn-rota-de-fuga" type="button" class="btn btn-danger" onclick="rotaDeFuga();" data-toggle="modal" data-target="#myModal">!</button>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Por favor, aguarde...</h4>
+                </div>
+                <div class="modal-body">
+                     <img src="images/loading.gif" width="240px" height="auto"/>
+                </div>
+            </div>
+        </div>
+    </div>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXUmL8jNsy6Z7a-xhsSx_caGVDhaN3aAw&libraries=places&callback=initMap">
     </script>
 </body>
