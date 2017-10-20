@@ -97,7 +97,7 @@ function createMarker(position, map, icon) {
 function posicaoAtual() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
-            ultimaPosicaoConhecida = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+            ultimaPosicaoConhecida = new google.maps.LatLng(-19.9332102,-43.9369648);
             map.setCenter(ultimaPosicaoConhecida);
         }, function () {
             handleLocationError(true, map);
