@@ -1,6 +1,6 @@
-document.getElementById("btn-criar-conta").addEventListener('click', createUser);
-document.getElementById("btn-criar-conta").disabled = true;
-document.getElementById("confirmacao-senha").addEventListener("keyup", compararSenhas);
+var btn = document.getElementsByClassName("btn-auth")[0];
+btn.addEventListener('click', createUser);
+btn.disabled = true;
 
 var config = {
     apiKey: "AIzaSyAnZTBIEmUzSixubXQoib5_a2r1LfK9qXg",
@@ -19,7 +19,7 @@ auth.onAuthStateChanged(function (user) {
         email = user.email;
         uid = user.uid;
     } else {
-        window.location = "/login.html";
+        window.location = "login.html";
     }
 });
 
@@ -40,18 +40,10 @@ function signIn() {
     auth.signInWithEmailAndPassword(email, password).catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
-        // mensagem de erro.
     });
 }
 
 
 function compararSenhas() {
     var inputSenha = document.getElementById("senha");
-    var inputConfirmacao = document.getElementById("confirmacao-senha");
-    var btn = document.getElementById("btn-criar-conta");
-    if (inputSenha.value && inputSenha.value == inputConfirmacao.value) {
-        btn.disabled = false;
-    } else {
-        btn.disabled = true;
-    }
 }
