@@ -1,11 +1,16 @@
 var btn = document.getElementsByClassName("btn-auth")[0];
-btn.addEventListener('click', createUser);
 btn.disabled = true;
+
+if (btn.id == "btn-cadastrar") {
+    btn.addEventListener("click", createUser);
+} else if (btn.id == "btn-login") {
+    btn.addEventListener("click", signIn);
+}
+document.getElementById("google-icon").addEventListener("click", signInWithGmail);
 document.getElementById("email").addEventListener("blur", validarEmail);
 document.getElementById("senha").addEventListener("blur", validarSenha);
 document.getElementById("email").addEventListener("keyup", validarEmail);
 document.getElementById("senha").addEventListener("keyup", validarSenha);
-
 
 var config = {
     apiKey: "AIzaSyAnZTBIEmUzSixubXQoib5_a2r1LfK9qXg",
@@ -15,37 +20,45 @@ var config = {
     storageBucket: "rota-de-fuga-teste.appspot.com",
     messagingSenderId: "63327819122"
 };
+
 firebase.initializeApp(config);
-var auth = firebase.auth();
-var email;
-var uid;
-auth.onAuthStateChanged(function (user) {
+var usuario;
+var token;
+firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        email = user.email;
-        uid = user.uid;
-    } else {
-        window.location = "login.html";
+        console.log(user.email);
+        console.log(user.uid);
+        usuario = user;
     }
 });
 
-function createUser() {
-    if (document.getElementById("alert-email").style.display == "block") return;
-    if (validarEmail && validarSenha) {
-        var inputEmail = document.getElementById("email");
-        var senha = document.getElementById("senha").value;
-        auth.createUserWithEmailAndPassword(email, senha).catch(function (error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // ...
-            console.log(errorCode);
-            console.log(errorMessage);
-        });
+firebase.auth().getRedirectResult().then(function (result) {
+    if (result.credential) {
+        token = result.credential.accessToken;
     }
+    usuario = result.user;
+}).catch(function (error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+});
+
+
+function createUser() {
+    var inputEmail = document.getElementById("email");
+    var senha = document.getElementById("senha").value;
+    firebase.auth().createUserWithEmailAndPassword(email, senha).catch(function (error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+    });
+}
+
+function signInWithGmail() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithRedirect(provider);
 }
 
 function signIn() {
-    auth.signInWithEmailAndPassword(email, password).catch(function (error) {
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
     });
@@ -55,9 +68,8 @@ function validarEmail() {
     var email = document.getElementById("email");
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (re.test(email.value)) {
-        displayAlert(email, null)
-    } else {
         displayAlert(email, null);
+    } else {
         displayAlert(email, "Email invalido");
     }
     changeDisableStateButton();
@@ -88,8 +100,5 @@ function displayAlert(element, msg) {
 function changeDisableStateButton() {
     var alertaDeEmail = document.getElementById("alert-email").style.display == "none";
     var alertaDeSenha = document.getElementById("alert-senha").style.display == "none";
-    console.log(alertaDeEmail);
-    console.log(alertaDeSenha);
-    console.log(!(alertaDeEmail && alertaDeSenha));
     btn.disabled = !(alertaDeEmail && alertaDeSenha);
 }
