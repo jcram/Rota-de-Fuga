@@ -42,7 +42,7 @@ body {
 
 .container-auth{
     position:relative;
-    top:10%;
+    top:15%;
     margin:0 auto;
     max-width: 350px;
 }
@@ -57,7 +57,7 @@ body {
 
 .container-auth #container-logo{
     text-align: center;
-    padding: 30px 0px;
+    padding: 25px 0px;
 }
 
 .container-auth #container-logo span{
@@ -97,6 +97,11 @@ body {
 
 #container-input{
     margin-top: 30px;
+}
+
+.alert-login{
+    color:#E42046;
+    font-size: 12px;
 }
 
 #container-input div {

@@ -1,6 +1,11 @@
 var btn = document.getElementsByClassName("btn-auth")[0];
 btn.addEventListener('click', createUser);
 btn.disabled = true;
+document.getElementById("email").addEventListener("blur", validarEmail);
+document.getElementById("senha").addEventListener("blur", validarSenha);
+document.getElementById("email").addEventListener("keyup", validarEmail);
+document.getElementById("senha").addEventListener("keyup", validarSenha);
+
 
 var config = {
     apiKey: "AIzaSyAnZTBIEmUzSixubXQoib5_a2r1LfK9qXg",
@@ -24,16 +29,19 @@ auth.onAuthStateChanged(function (user) {
 });
 
 function createUser() {
-    var inputEmail = document.getElementById("email");
-    var senha = document.getElementById("senha").value;
-    auth.createUserWithEmailAndPassword(email, senha).catch(function (error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
-        console.log(errorCode);
-        console.log(errorMessage);
-    });
+    if (document.getElementById("alert-email").style.display == "block") return;
+    if (validarEmail && validarSenha) {
+        var inputEmail = document.getElementById("email");
+        var senha = document.getElementById("senha").value;
+        auth.createUserWithEmailAndPassword(email, senha).catch(function (error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // ...
+            console.log(errorCode);
+            console.log(errorMessage);
+        });
+    }
 }
 
 function signIn() {
@@ -43,7 +51,45 @@ function signIn() {
     });
 }
 
+function validarEmail() {
+    var email = document.getElementById("email");
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (re.test(email.value)) {
+        displayAlert(email, null)
+    } else {
+        displayAlert(email, null);
+        displayAlert(email, "Email invalido");
+    }
+    changeDisableStateButton();
+}
 
-function compararSenhas() {
-    var inputSenha = document.getElementById("senha");
+function validarSenha() {
+    var senha = document.getElementById("senha");
+    if (senha.value && senha.value.length >= 6) {
+        displayAlert(senha, null);
+    } else {
+        displayAlert(senha, "A senha deve conter no minimo 6 caracteres.");
+    }
+    changeDisableStateButton();
+}
+
+function displayAlert(element, msg) {
+    var alert = document.getElementById("alert-" + element.id);
+    if (msg) {
+        alert.innerHTML = msg;
+        alert.style.display = "block";
+        element.parentElement.style.border = "1px solid #E42046";
+    } else {
+        alert.style.display = "none";
+        element.parentElement.style.border = "1px solid #b6f35cff";
+    }
+}
+
+function changeDisableStateButton() {
+    var alertaDeEmail = document.getElementById("alert-email").style.display == "none";
+    var alertaDeSenha = document.getElementById("alert-senha").style.display == "none";
+    console.log(alertaDeEmail);
+    console.log(alertaDeSenha);
+    console.log(!(alertaDeEmail && alertaDeSenha));
+    btn.disabled = !(alertaDeEmail && alertaDeSenha);
 }
