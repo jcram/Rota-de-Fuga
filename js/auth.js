@@ -26,9 +26,8 @@ var usuario;
 var token;
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        console.log(user.email);
-        console.log(user.uid);
         usuario = user;
+        window.location = "time-line.html";
     }
 });
 
