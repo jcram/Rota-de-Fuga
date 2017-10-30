@@ -1,10 +1,10 @@
 var config = {
-    apiKey: "AIzaSyAnZTBIEmUzSixubXQoib5_a2r1LfK9qXg",
-    authDomain: "rota-de-fuga-teste.firebaseapp.com",
-    databaseURL: "https://rota-de-fuga-teste.firebaseio.com",
-    projectId: "rota-de-fuga-teste",
-    storageBucket: "rota-de-fuga-teste.appspot.com",
-    messagingSenderId: "63327819122"
+    apiKey: "AIzaSyC3jg6oX-UNkTfjfttrDpEBocqSK7DmVCg",
+    authDomain: "rota-de-fuga.firebaseapp.com",
+    databaseURL: "https://rota-de-fuga.firebaseio.com",
+    projectId: "rota-de-fuga",
+    storageBucket: "rota-de-fuga.appspot.com",
+    messagingSenderId: "194503795991"
 };
 
 firebase.initializeApp(config);
@@ -40,8 +40,6 @@ function extractActualPage() {
     redireciona para paginas especifica dependendo do estado de login do usuario
 */
 function redirect(pg, user) {
-    console.log(pg);
-    console.log(user);
     if (pg != "login.html" && pg != "cadastro.html") {
         if (!user)
             window.location = "login.html";
