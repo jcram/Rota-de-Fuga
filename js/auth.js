@@ -19,7 +19,7 @@ firebase.auth().getRedirectResult().then(function (result) {
     if (result.credential) {
         token = result.credential.accessToken;
     }
-    window.location = "time-line.html";
+    console.log("Redirecionando para a Time Line");
 }).catch(function (error) {
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -46,7 +46,7 @@ function redirect(pg, user) {
         if (!user)
             window.location = "login.html";
     } else if (user) {
-        window.location = "time-line.html";
+        console.log("Redirecionando para a Time Line");
     }
 }
 

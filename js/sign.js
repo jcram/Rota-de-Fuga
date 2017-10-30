@@ -7,6 +7,7 @@ if (btn.id == "btn-cadastrar") {
     btn.addEventListener("click", logar);
 }
 document.getElementById("google-icon").addEventListener("click", signInWithGmail);
+document.getElementById("facebook-icon").addEventListener("click", signInWithFacebook);
 document.getElementById("email").addEventListener("blur", validarEmail);
 document.getElementById("senha").addEventListener("blur", validarSenha);
 document.getElementById("email").addEventListener("keyup", validarEmail);
