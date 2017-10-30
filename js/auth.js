@@ -1,17 +1,3 @@
-var btn = document.getElementsByClassName("btn-auth")[0];
-btn.disabled = true;
-
-if (btn.id == "btn-cadastrar") {
-    btn.addEventListener("click", createUser);
-} else if (btn.id == "btn-login") {
-    btn.addEventListener("click", signIn);
-}
-document.getElementById("google-icon").addEventListener("click", signInWithGmail);
-document.getElementById("email").addEventListener("blur", validarEmail);
-document.getElementById("senha").addEventListener("blur", validarSenha);
-document.getElementById("email").addEventListener("keyup", validarEmail);
-document.getElementById("senha").addEventListener("keyup", validarSenha);
-
 var config = {
     apiKey: "AIzaSyAnZTBIEmUzSixubXQoib5_a2r1LfK9qXg",
     authDomain: "rota-de-fuga-teste.firebaseapp.com",
@@ -25,26 +11,47 @@ firebase.initializeApp(config);
 var usuario;
 var token;
 firebase.auth().onAuthStateChanged(function (user) {
-    if (user) {
-        usuario = user;
-        window.location = "time-line.html";
-    }
+    usuario = user;
+    redirect(extractActualPage(), user);
 });
 
 firebase.auth().getRedirectResult().then(function (result) {
     if (result.credential) {
         token = result.credential.accessToken;
     }
-    usuario = result.user;
+    window.location = "time-line.html";
 }).catch(function (error) {
     var errorCode = error.code;
     var errorMessage = error.message;
 });
 
+/*
+    Extrai em qual pagina o usuario esta navegando.
+*/
+function extractActualPage() {
+    var url = window.location.href;
+    var indexBarra = url.lastIndexOf("/");
+    if (indexBarra == url.length + 1)
+        return "";
+    return url.substring(indexBarra + 1);
+}
 
-function createUser() {
-    var inputEmail = document.getElementById("email");
-    var senha = document.getElementById("senha").value;
+/*
+    redireciona para paginas especifica dependendo do estado de login do usuario
+*/
+function redirect(pg, user) {
+    console.log(pg);
+    console.log(user);
+    if (pg != "login.html" && pg != "cadastro.html") {
+        if (!user)
+            window.location = "login.html";
+    } else if (user) {
+        window.location = "time-line.html";
+    }
+}
+
+
+function createUser(email, senha) {
     firebase.auth().createUserWithEmailAndPassword(email, senha).catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -56,48 +63,24 @@ function signInWithGmail() {
     firebase.auth().signInWithRedirect(provider);
 }
 
-function signIn() {
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
+function signIn(email, password) {
+    firebase.auth().signInWithEmailAndPassword(email, password).then(function (result) {
+        console.log(result);
+    }).catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
     });
 }
 
-function validarEmail() {
-    var email = document.getElementById("email");
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (re.test(email.value)) {
-        displayAlert(email, null);
-    } else {
-        displayAlert(email, "Email invalido");
-    }
-    changeDisableStateButton();
+function signInWithFacebook() {
+    var provider = new firebase.auth.FacebookAuthProvider();
+    firebase.auth().signInWithRedirect(provider);
 }
 
-function validarSenha() {
-    var senha = document.getElementById("senha");
-    if (senha.value && senha.value.length >= 6) {
-        displayAlert(senha, null);
-    } else {
-        displayAlert(senha, "A senha deve conter no minimo 6 caracteres.");
-    }
-    changeDisableStateButton();
-}
-
-function displayAlert(element, msg) {
-    var alert = document.getElementById("alert-" + element.id);
-    if (msg) {
-        alert.innerHTML = msg;
-        alert.style.display = "block";
-        element.parentElement.style.border = "1px solid #E42046";
-    } else {
-        alert.style.display = "none";
-        element.parentElement.style.border = "1px solid #b6f35cff";
-    }
-}
-
-function changeDisableStateButton() {
-    var alertaDeEmail = document.getElementById("alert-email").style.display == "none";
-    var alertaDeSenha = document.getElementById("alert-senha").style.display == "none";
-    btn.disabled = !(alertaDeEmail && alertaDeSenha);
+function signOut() {
+    firebase.auth().signOut().then(function () {
+        window.location = "login.html";
+    }).catch(function (error) {
+        // enviar mensagem para o usuario
+    });
 }

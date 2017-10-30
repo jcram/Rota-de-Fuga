@@ -3,16 +3,22 @@
 
 <head>
     <title>Rota de Fuga</title>
+    
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+     <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script src="js/auth.js"></script>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="shortcut icon" type="image/png" href="images/logo-rota-de-fuga.png">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/style.css" />
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -20,26 +26,27 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
                 <a id="logo" class="navbar-brand" href="#myPage">
                     <img src="images/logo-rota-de-fuga.png" width="40px" height="auto" style="float:left;position:relative;bottom:10px;"/>
-                    <span style="margin-left:20px;">ROTA DE FUGA</span></a>
+                    <span style="margin-left:20px;">ROTA DE FUGA</span>
+                </a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="index.html">Home</a></li>
                     <li class="menu-fui-roubado"><a href="fui-roubado.html">Fui Roubado!</a></li>
-                    <li><a href="login.html">Login</a></li>
+                    <li><a href="inscrever.html">Inscreva-se</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container-auth">
         <div id="container-logo">
-            <img src="images/logo-rota-de-fuga.png" width="50px"/>
+            <img src="images/logo-rota-de-fuga.png" width="50px" />
             <div>
                 <span>ROTA DE FUGA</span>
             </div>
@@ -70,7 +77,7 @@
                     </div>
                     <div id="options">
                         <span>Nao possui uma conta?</span>
-                        <a href="cadastro.html">cadastre-se</a>
+                        <a href="inscrever.html">inscreva-se</a>
                     </div>
                     <div id="footer">
                         <div id="facebook-icon" class="social-media-icon">F</div>
@@ -95,7 +102,7 @@
             </div>
         </div>
     </div>
-    <script src="js/auth.js"></script>
+    <script src="js/sign.js"></script>
 </body>
 
 </html>

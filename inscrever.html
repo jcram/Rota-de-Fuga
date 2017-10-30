@@ -3,16 +3,21 @@
 
 <head>
     <title>Rota de Fuga</title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script src="js/auth.js"></script>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="shortcut icon" type="image/png" href="images/logo-rota-de-fuga.png">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/style.css" />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -37,50 +42,50 @@
             </div>
         </div>
     </nav>
-        <div class="container-auth">
-            <div id="container-logo">
-                <img src="images/logo-rota-de-fuga.png" width="50px"/>
-                <div>
-                    <span>ROTA DE FUGA</span>
-                </div>
+    <div class="container-auth">
+        <div id="container-logo">
+            <img src="images/logo-rota-de-fuga.png" width="50px" />
+            <div>
+                <span>ROTA DE FUGA</span>
             </div>
-            <div class="container">
-                <div class="panel panel-default">
-                    <div id="box-auth" class="panel-body">
-                        <div id="header">
-                            <span class="titulo">Cadastre-se</span>
-                            <br/>
-                            <span class="subtitulo">Don't Panic</span>
+        </div>
+        <div class="container">
+            <div class="panel panel-default">
+                <div id="box-auth" class="panel-body">
+                    <div id="header">
+                        <span class="titulo">Inscreva-se</span>
+                        <br/>
+                        <span class="subtitulo">Don't Panic</span>
+                    </div>
+                    <div id="container-input">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input id="email" type="email" class="form-control entrada-auth" name="email" placeholder="Email" required>
                         </div>
-                        <div id="container-input">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input id="email" type="email" class="form-control entrada-auth" name="email" placeholder="Email" required >
-                            </div>
-                            <div>
-                                <span id="alert-email" class="alert-login"></span>
-                            </div>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                <input id="senha" type="password" class="form-control entrada-auth" name="password" placeholder="Senha" required min="6">
-                            </div>
-                            <div>
-                                <span id="alert-senha" class="alert-login"></span>
-                            </div>
+                        <div>
+                            <span id="alert-email" class="alert-login"></span>
                         </div>
-                        <div id="options">
-                            <span>Ja possui uma conta?</span>
-                            <a href="login.html">login</a>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            <input id="senha" type="password" class="form-control entrada-auth" name="password" placeholder="Senha" required min="6">
                         </div>
-                        <div id="footer">
-                            <div id="facebook-icon" class="social-media-icon">F</div>
-                            <div id="google-icon" class="social-media-icon">G</div>
-                            <input id="btn-cadastrar" type="button" class="btn btn-info btn-auth" value="Cadastrar" />
+                        <div>
+                            <span id="alert-senha" class="alert-login"></span>
                         </div>
+                    </div>
+                    <div id="options">
+                        <span>Ja possui uma conta?</span>
+                        <a href="login.html">login</a>
+                    </div>
+                    <div id="footer">
+                        <div id="facebook-icon" class="social-media-icon">F</div>
+                        <div id="google-icon" class="social-media-icon">G</div>
+                        <input id="btn-cadastrar" type="button" class="btn btn-info btn-auth" value="Inscrever" />
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -95,7 +100,7 @@
             </div>
         </div>
     </div>
-    <script src="js/auth.js"></script>
+    <script src="js/sign.js"></script>
 </body>
 
 </html>
