@@ -12,29 +12,149 @@ body {
 
 #btn-rota-de-fuga {
     min-height: 100px;
-    min-width:100px;
+    min-width: 100px;
     font-size: 60px;
     border-radius: 60px;
     text-align: center;
     position: absolute;
     right: 0;
     bottom: 0;
-    margin-right:50px;
-    margin-bottom:50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
     cursor: pointer;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, .5);
 }
 
-#myModal{
+#myModal {
     margin-top: 20%;
-    width:300px;
-    margin:0 auto;
+    width: 300px;
+    margin: 0 auto;
     margin-top: 50px;
+}
+
+/*
+    Login
+*/
+#box-auth {
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, .1);
+    border: 1px solid #d6d6d6;
+}
+
+.container-auth{
+    position:relative;
+    top:15%;
+    margin:0 auto;
+    max-width: 350px;
+}
+
+.container-auth div{
+    max-width: 350px;
+}
+
+.container-auth .container{
+    padding: 0px;
+}
+
+.container-auth #container-logo{
+    text-align: center;
+    padding: 25px 0px;
+}
+
+.container-auth #container-logo span{
+    font-size:26px;
+    color:#28324a;
+    font-weight: bold;
+}
+
+#box-auth #options{
+    font-size:14px;
+    margin-top:5px;
+    color: #28324a;
+}
+
+#box-auth #options a{
+    color:#32d8c0;
+    font-weight: bold;
+    margin-left:10px;
+}
+
+#box-auth #header {
+    text-align: center;
+    font-family: Montserrat, sans-serif;
+}
+
+#box-auth #header .titulo {
+    font-size: 26px;
+    color:#28324a;
+}
+
+#box-auth #header .subtitulo{
+    font-size: 12px;
+    color:#7a7a7a;
+    position: relative;
+    bottom:10px;
+}
+
+#container-input{
+    margin-top: 30px;
+}
+
+.alert-login{
+    color:#E42046;
+    font-size: 12px;
+}
+
+#container-input div {
+    width: 100%;
+}
+
+.entrada-auth {
+    width: 100%;
+    height: 48px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 9px;
+    border-radius: 0px;
+    background: #f6f6f6;
+}
+
+#box-auth  #footer {
+    font-size: 16px;
+    padding: 20px 0px;
+    
+}
+
+.btn-auth{
+    width: 100px;
+    background: #32d8c0;
+    float:right;
+}
+
+.social-media-icon{
+    width: 44px;
+    height: 44px;
+    font-weight: bold;
+    border-radius: 25px;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    padding: 7px;
+    cursor: pointer;
+}
+
+#facebook-icon{
+    background: #0c59cf;
+}
+
+#google-icon{
+    background: #ff3823;
+    margin-left:10px;
 }
 
 /*
     LAYOUT
 */
+
 body {
     font: 400 15px Lato, sans-serif;
     line-height: 1.8;
@@ -73,12 +193,12 @@ h4 {
 }
 
 .logo-small {
-    color: #f4511e;
+    color: #f6f6f6;
     font-size: 50px;
 }
 
 .logo {
-    color: #f4511e;
+    color: #f6f6f6;
     font-size: 200px;
 }
 
@@ -97,15 +217,15 @@ h4 {
 .carousel-control.right,
 .carousel-control.left {
     background-image: none;
-    color: #f4511e;
+    color: #f6f6f6;
 }
 
 .carousel-indicators li {
-    border-color: #f4511e;
+    border-color: #f6f6f6;
 }
 
 .carousel-indicators li.active {
-    background-color: #f4511e;
+    background-color: #f6f6f6;
 }
 
 .item h4 {
@@ -121,7 +241,7 @@ h4 {
 }
 
 .panel {
-    border: 1px solid #f4511e;
+    border: 1px solid #f6f6f6;
     border-radius: 0 !important;
     transition: box-shadow 0.5s;
 }
@@ -131,14 +251,14 @@ h4 {
 }
 
 .panel-footer .btn:hover {
-    border: 1px solid #f4511e;
+    border: 1px solid #f6f6f6;
     background-color: #fff !important;
-    color: #f4511e;
+    color: #f6f6f6;
 }
 
 .panel-heading {
     color: #fff !important;
-    background-color: #f4511e !important;
+    background-color: #f6f6f6 !important;
     padding: 25px;
     border-bottom: 1px solid transparent;
     border-top-left-radius: 0px;
@@ -162,7 +282,7 @@ h4 {
 
 .panel-footer .btn {
     margin: 15px 0;
-    background-color: #f4511e;
+    background-color: #f6f6f6;
     color: #fff;
 }
 
@@ -176,10 +296,10 @@ h4 {
     letter-spacing: 4px;
     border-radius: 0;
     font-family: Montserrat, sans-serif;
-    box-shadow:1px 1px 17px -1px hsla(0, 0%, 63%, .69);
+    box-shadow: 1px 1px 17px -1px hsla(0, 0%, 63%, .69);
 }
 
-#logo{
+#logo {
     background: #fff;
     font-weight: bold;
 }
@@ -205,7 +325,7 @@ h4 {
 footer .glyphicon {
     font-size: 20px;
     margin-bottom: 20px;
-    color: #f4511e;
+    color: #f6f6f6;
 }
 
 .slideanim {
