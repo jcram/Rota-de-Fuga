@@ -17,8 +17,8 @@
     <script src="js/google-maps.js"></script>
 </head>
 
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="loadMapaDeCalor();">
-
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+    <input type="hidden" value="">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -33,35 +33,15 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="apresentation.html"><span class="glyphicon glyphicon-home icon-menu-bar"></span></a></li>
-                    <li class="menu-fui-roubado"><a href="fui-roubado.html">Fui Roubado!</a></li>
-                    <li><a href="inscrever.html">Inscreva-se</a></li>
-                    <li><a href="login.html">Login</a></li>
+                    <li><a href="time-line.html"><span class="glyphicon glyphicon-time icon-menu-bar"></span></a></li>
+                    <li><a href="login.html"><span class="glyphicon glyphicon-log-out icon-menu-bar"></span></a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <!-- Add Google Maps -->
     <div id="map"></div>
-    <button id="btn-rota-de-fuga" type="button" class="btn btn-danger" onclick="rotaDeFuga();" data-toggle="modal" data-target="#myModal">!</button>
-    <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Por favor, aguarde...</h4>
-                </div>
-                <div class="modal-body">
-                    <img src="images/loading.gif" width="240px" height="auto" />
-                </div>
-            </div>
-        </div>
-    </div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXUmL8jNsy6Z7a-xhsSx_caGVDhaN3aAw&libraries=places&callback=initMap">
-
-
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXUmL8jNsy6Z7a-xhsSx_caGVDhaN3aAw&libraries=places&callback=initMapMapaDeCalor">
     </script>
 </body>
-
 </html>

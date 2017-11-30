@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rota de Fuga</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="images/logo-rota-de-fuga.png">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/google-maps.js"></script>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="carregarTimeLine();">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a id="logo" class="navbar-brand" href="#myPage">
+                    <img src="images/logo-rota-de-fuga.png" width="40px" height="auto" style="float:left;position:relative;bottom:10px;"/>
+                    <span style="margin-left:20px;">ROTA DE FUGA</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" id="btn-fui-roubado" onclick="openFuiRoubado();">Fui Roubado!</a></li>
+                    <li><a href="mapa-de-calor.html"><span class="glyphicon glyphicon-fire icon-menu-bar"></span></a></li>
+                    <li><a href="login.html"><span class="glyphicon glyphicon-log-out icon-menu-bar"></span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="msg-space"></div>
+    <div id="menu-search">
+        <form style="padding: 20px 30px;border: 0px;width: 100%;height: 100%;" action="javascript:pesquisarPosts();">
+            <div style="padding-bottom:10px;color:#28324a; font-weight: bold;font-size:14px;">Pesquisa</div>
+            <div style="width:100%; border-bottom: 1px solid #e6ecf0;"></div>
+            <div style="padding: 30px 0px">
+                <div><input id="autocomplete" required class="custom-input" type="text" placeholder="Ex: Savassi..."></div>
+                <div style="margin-top:30px;">
+                    <label for="myRange">Raio</label>
+                    <div id="value-raio" style="text-align: center;">500 metros</div>
+                    <div id="slidecontainer">
+                        <input required type="range" min="100" max="1000" value="500" class="slider" id="myRange" oninput="updateRaio();">
+                    </div>
+                    <div style="display:inline-block;">100</div>
+                    <div style="display:inline-block;float:right;">1000</div>
+                </div>
+            </div>
+            <br/>
+            <div style="width:100%; border-bottom: 1px solid #e6ecf0;"></div>
+            <br/>
+            <div>
+                <div style="color:#28324a; font-weight: bold;font-size:12px;">Periodo</div>
+                <label for="dataInicio">De:</label>
+                <input required id="data-inicio" type="date" class="custom-input">
+                <br/>
+                <label for="dataFim">Ate:</label>
+                <input required id="data-fim" type="date" class="custom-input">
+                <br/>
+            </div>
+            <br/>
+            <div style="text-align: center;padding:3px;">
+                <button class="btn btn-success" type="submit">Pesquisar</button>
+            </div>
+        </form>
+    </div>
+    <div id="list_posts">
+
+    </div>
+    
+    <!-- Modal -->
+    <div id="fui-roubado" class="modal fade min-space-top min-font-size" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Fui Roubado...</h4>
+                </div>
+                <div class="modal-body">
+                    <div style="padding:20px;">
+                        <div id="tab1">
+                            <form id="form-fui-roubado" action="javascript:nextTab();">
+                                <div>
+                                    <label for="descricao">Como ocorreu?</label>
+                                    <textarea required class="custom-input" type="text" id="descricao" placeholder="Descreva o ocorrido..."></textarea>
+                                </div>
+                                <br/>
+                                <div style="display: inline-block;">
+                                    <label for="time-data-roubo">Horario: </label>
+                                    <input required class="custom-input" type="time" id="time-roubo">
+                                </div>
+                                <div style="display: inline-block;">
+                                    <label for="time-data-roubo">Dia: </label>
+                                    <input required id="date-roubo" class="custom-input" type="date">
+                                </div>
+                                <div style="margin: 20px 0px;padding-top:10px;border-top: 1px solid #e6ecf0;">
+                                    <button class="btn btn-success" type="submit" style="float:right;">Continuar <span class="glyphicon glyphicon-arrow-right"></span></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="tab2" style="display: none;">
+                            <div style="height: 300px">
+                                <div id="map"></div>
+                            </div>
+                            <div style="margin: 20px auto 0px;text-align: right">
+                                <button class="btn" onclick="previousTab();"><span class="glyphicon glyphicon-arrow-left" style="margin-right: 20px;"></span> Voltar</button>
+                                <button class="btn btn-success" type="button" value="Salvar" onclick="salvarPosicao();">Salvar <span class="glyphicon glyphicon-ok"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="modalFullPicture" class="modal fade min-space-top" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Local do Roubo</h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXUmL8jNsy6Z7a-xhsSx_caGVDhaN3aAw&libraries=places&callback=initMapTimeLine" async defer></script>
+</body>
+
+</html>
