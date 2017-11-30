@@ -7,7 +7,7 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background: #f6f6f6;
+    background: #e6ecf0;
 }
 
 #btn-rota-de-fuga {
@@ -26,56 +26,287 @@ body {
 }
 
 #myModal {
-    margin-top: 20%;
+    margin: 50px auto;
     width: 300px;
+}
+
+#msg-space {
+    position: fixed;
+    right: 5px;
+}
+
+#myModal div.modal-content {
+    width: 300px;
+}
+
+/*
+    onde fui roubado.
+*/
+
+.min-font-size{
+    font-size:11px;
+}
+
+.min-space-top{
+    margin: 50px auto;
+}
+
+#fui-roubado div.modal-conten {
+    width: 50%;
+}
+
+#div-fui-roubado {
+    width: 100%;
     margin: 0 auto;
-    margin-top: 50px;
+    background-color: white;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, .1);
+}
+
+/*
+    Time Line
+*/
+
+#menu-search {
+    background-color: white;
+    width: 20%;
+    height: 85%;
+    display: inline-block;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, .1);
+    top: 12%;
+    left: 4%;
+    position: fixed;
+    font-size: 12px;
+}
+
+#btn-pesquisar {
+    padding: 5px;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    width: 80%;
+    background-color: #57ba27;
+    border-radius: 5px;
+    border: 1px solid #4fb51e;
+}
+
+.btn-pesquisar {
+    padding: 5px;
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    background-color: #57ba27;
+    border-radius: 5px;
+    border: 1px solid #4fb51e;
+}
+
+#list_posts {
+    width: 100%;
+    margin-top: 6%;
+}
+
+input.custom-input,
+textarea.custom-input {
+    width: 100%;
+    border: 1px solid #dce3e8;
+    background-color: #f6f6f6;
+    padding: 5px;
+}
+
+.post {
+    width: 45%;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, .1);
+    margin: 2px auto 2px;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    background-color: white;
+}
+
+.empty-time-line {
+    width: 100%;
+    height: 100px;
+    border: 10px solid white;
+    color: #28324a;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    width: 45%;
+    margin: 2px auto 2px;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, .1);
+    padding: 20px;
+}
+
+.header-post {
+    width: 100%;
+    background-color: white;
+    padding: 15px;
+    border-bottom: 1px solid #e6ecf0;
+    background-color: #f6f6f6;
+}
+
+.endereco-header-post {
+    display: inline-block;
+    color: #28324a;
+    font-weight: bold;
+}
+
+.data-header-post {
+    display: inline-block;
+    float: right;
+    color: #657786;
+    font-size: 11px;
+}
+
+.body-post {
+    width: 100%;
+    height: 250px;
+    background-color: white;
+    color: #28324a;
+    margin: 0 auto;
+    padding: 10px 30px 30px;
+}
+
+.photos-post {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #e6ecf0;
+}
+
+.main-photo-post {
+    width: 60%;
+    height: 100%;
+    display: inline-block;
+    border: 1px solid #e6ecf0;
+}
+
+.img-post{
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+.img-post:hover{
+    cursor: pointer;
+    box-shadow: 1px 1px 7px 1px #28324a;
+}
+
+.img-full{
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+.aux-photo-post {
+    width: 40%;
+    height: 100%;
+    display: inline-block;
+}
+
+.photo-post {
+    width: 100%;
+    height: 50%;
+    border: 1px solid #e6ecf0;
+}
+
+.footer-post {
+    width: 100%;
+    background-color: white;
+    padding: 20px;
+    color: black;
+}
+
+.comentario-post {
+    width: 100%;
+    background-color: white;
+    padding: 15px;
+    border-top: 1px solid #e6ecf0;
+}
+
+/*slide icon*/
+
+#slidecontainer {
+    width: 100%;
+    padding: 3px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #E42046;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #E42046;
+    cursor: pointer;
 }
 
 /*
     Login
 */
+
 #box-auth {
     box-shadow: 1px 1px 7px rgba(0, 0, 0, .1);
     border: 1px solid #d6d6d6;
 }
 
-.container-auth{
-    position:relative;
-    top:15%;
-    margin:0 auto;
+.container-auth {
+    position: relative;
+    top: 15%;
+    margin: 0 auto;
     max-width: 350px;
 }
 
-.container-auth div{
+.container-auth div {
     max-width: 350px;
 }
 
-.container-auth .container{
+.container-auth .container {
     padding: 0px;
 }
 
-.container-auth #container-logo{
+.container-auth #container-logo {
     text-align: center;
     padding: 25px 0px;
 }
 
-.container-auth #container-logo span{
-    font-size:26px;
-    color:#28324a;
+.container-auth #container-logo span {
+    font-size: 26px;
+    color: #28324a;
     font-weight: bold;
 }
 
-#box-auth #options{
-    font-size:14px;
-    margin-top:5px;
+#box-auth #options {
+    font-size: 14px;
+    margin-top: 5px;
     color: #28324a;
 }
 
-#box-auth #options a{
-    color:#32d8c0;
+#box-auth #options a {
+    color: #32d8c0;
     font-weight: bold;
-    margin-left:10px;
+    margin-left: 10px;
 }
 
 #box-auth #header {
@@ -85,22 +316,22 @@ body {
 
 #box-auth #header .titulo {
     font-size: 26px;
-    color:#28324a;
+    color: #28324a;
 }
 
-#box-auth #header .subtitulo{
+#box-auth #header .subtitulo {
     font-size: 12px;
-    color:#7a7a7a;
+    color: #7a7a7a;
     position: relative;
-    bottom:10px;
+    bottom: 10px;
 }
 
-#container-input{
+#container-input {
     margin-top: 30px;
 }
 
-.alert-login{
-    color:#E42046;
+.alert-login {
+    color: #E42046;
     font-size: 12px;
 }
 
@@ -117,19 +348,19 @@ body {
     background: #f6f6f6;
 }
 
-#box-auth  #footer {
+#box-auth #footer {
     font-size: 16px;
     padding: 20px 0px;
-    
+
 }
 
-.btn-auth{
+.btn-auth {
     width: 100px;
     background: #32d8c0;
-    float:right;
+    float: right;
 }
 
-.social-media-icon{
+.social-media-icon {
     width: 44px;
     height: 44px;
     font-weight: bold;
@@ -142,13 +373,13 @@ body {
     cursor: pointer;
 }
 
-#facebook-icon{
+#facebook-icon {
     background: #0c59cf;
 }
 
-#google-icon{
+#google-icon {
     background: #ff3823;
-    margin-left:10px;
+    margin-left: 10px;
 }
 
 /*
@@ -162,9 +393,8 @@ body {
 }
 
 h2 {
-    font-size: 24px;
-    text-transform: uppercase;
-    color: #303030;
+    font-size: 30px;
+    color: #28324a;
     font-weight: 600;
     margin-bottom: 30px;
 }
@@ -178,27 +408,30 @@ h4 {
 }
 
 .jumbotron {
-    background-color: #30D9CC;
-    color: #fff;
+    background-color: #28324a;
+    color: white;
     padding: 100px 25px;
     font-family: Montserrat, sans-serif;
 }
 
 .container-fluid {
     padding: 60px 50px;
-}
-
-.bg-grey {
+    border: 1px solid #e6ecf0;
+    border-radius: 15px;
     background-color: #f6f6f6;
 }
 
 .logo-small {
-    color: #f6f6f6;
+    color: #c73533;
     font-size: 50px;
 }
 
+.icon-menu-bar {
+    font-size: 16px;
+}
+
 .logo {
-    color: #f6f6f6;
+    color: #c73533;
     font-size: 200px;
 }
 
@@ -212,20 +445,6 @@ h4 {
     width: 100%;
     height: 100%;
     margin-bottom: 10px;
-}
-
-.carousel-control.right,
-.carousel-control.left {
-    background-image: none;
-    color: #f6f6f6;
-}
-
-.carousel-indicators li {
-    border-color: #f6f6f6;
-}
-
-.carousel-indicators li.active {
-    background-color: #f6f6f6;
 }
 
 .item h4 {
@@ -306,7 +525,7 @@ h4 {
 
 .navbar li a,
 .navbar .navbar-brand {
-    background: #f3f3f3;
+    background: white;
     color: #2B364B !important;
     font-weight: bold;
 }
@@ -314,22 +533,18 @@ h4 {
 .navbar-nav li a:hover,
 .navbar-nav li.active a {
     color: #30D9CC !important;
-    background-color: #fff !important;
+    background-color: #f3f3f3 !important;
 }
 
 .navbar-default .navbar-toggle {
     border-color: transparent;
-    color: #fff !important;
+    color: #c73533 !important;
 }
 
 footer .glyphicon {
     font-size: 20px;
     margin-bottom: 20px;
-    color: #f6f6f6;
-}
-
-.slideanim {
-    visibility: hidden;
+    color: #c73533;
 }
 
 .slide {
