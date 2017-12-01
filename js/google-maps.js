@@ -18,6 +18,7 @@ var positionRoubo;
 
 // variaveis utilizadas para a pesquisa de lugares.
 var autocomplete;
+var autocompleteModal;
 var place;
 
 // ==================> funçoes de inicializaçao de mapa <====================
@@ -94,6 +95,12 @@ function initAutocomplete() {
     });
     autocomplete.addListener('place_changed', function () {
         place = autocomplete.getPlace();
+    });
+    autocompleteModal = new google.maps.places.Autocomplete((document.getElementById('autocomplete-modal')), {
+        types: ['geocode']
+    });
+    autocompleteModal.addListener('place_changed', function () {
+        place = autocompleteModal.getPlace();
     });
 }
 
