@@ -128,6 +128,7 @@ function openFuiRoubado() {
     $("#fui-roubado #tab1").css("display", "block");
     $("#fui-roubado #tab2").css("display", "none");
     $("#fui-roubado").modal("show");
+    $("#myNavbar").toggle();
 }
 
 function nextTab() {
@@ -143,6 +144,10 @@ function previousTab() {
 }
 
 // =====================> Funcoes da Time Line <========================
+function pesquisarPostsModal(){
+    $("#pesquisarPostsModal").modal("hide");
+    pesquisarPosts();
+}
 function pesquisarPosts() {
     if (place) {
         var ti = new Date().getMilliseconds();
@@ -251,27 +256,30 @@ function msgNenhumPostEncontrado() {
 }
 
 function post(id, post) {
+    var row = document.createElement("div");
+    row.className="row";
     var divPost = document.createElement("div");
-    divPost.className = "post";
+    divPost.className = "col-xs-12 col-sm-8 col-sm-offset-4 col-md-6 col-md-offset-4 col-lg-6 col-lg-offset-3 post";
     divPost.id = id;
     divPost.appendChild(criarHeader(post));
     divPost.appendChild(criarFooter(post));
     divPost.appendChild(criarBody(post));
     divPost.appendChild(criarComentario());
-    document.getElementById("list_posts").appendChild(divPost);
+    row.appendChild(divPost);
+    document.getElementById("list_posts").appendChild(row);
 }
 
 function criarHeader(post) {
     var headerPost = document.createElement("div");
-    headerPost.className = "header-post";
+    headerPost.className = "col-xs-12 col-sm-12 col-md-12 col-lg-12 header-post";
 
     var endereco = document.createElement("div");
-    endereco.className = "endereco-header-post";
+    endereco.className = "col-xs-8 col-sm-8 col-md-8 col-lg-8 endereco-header-post";
     endereco.innerHTML = post.posicao.endereco;
 
     var data = document.createElement("div");
     data.innerHTML = formatDate(new Date(post.dataDoRoubo));
-    data.className = "data-header-post";
+    data.className = "col-xs-4 col-sm-4 col-md-4 col-lg-4 data-header-post";
 
     headerPost.appendChild(endereco);
     headerPost.appendChild(data);
@@ -301,25 +309,25 @@ function formatDate(data) {
 function criarBody(post) {
 
     var bodyPost = document.createElement("div");
-    bodyPost.className = "body-post";
+    bodyPost.className = "col-xs-12 col-sm-12 col-md-12 col-lg-12 body-post";
 
     var photos = document.createElement("div");
-    photos.className = "photos-post";
-    
-    var mainPhoto = createContainerPhoto(45, "main-photo-post", post.posicao);
+    photos.className = "col-xs-12 col-sm-12 col-md-12 col-lg-12 photos-post";
+
+    var mainPhoto = createContainerPhoto(45, "col-xs-6 col-sm-6 col-md-6 col-lg-6 main-photo-post", post.posicao);
 
     var auxPhotos = document.createElement("div");
-    auxPhotos.className = "aux-photo-post";
+    auxPhotos.className = "col-xs-6 col-sm-6 col-md-6 col-lg-6 aux-photo-post";
 
-    var auxPhoto1 = createContainerPhoto(90, "photo-post", post.posicao);
-    var auxPhoto2 = createContainerPhoto(135, "photo-post", post.posicao);
+    var auxPhoto1 = createContainerPhoto(90, "col-xs-6 col-sm-6 col-md-6 col-lg-6 photo-post", post.posicao);
+    var auxPhoto2 = createContainerPhoto(135, "col-xs-6 col-sm-6 col-md-6 col-lg-6 photo-post", post.posicao);
 
     photos.appendChild(mainPhoto);
     auxPhotos.appendChild(auxPhoto1);
     auxPhotos.appendChild(auxPhoto2);
     photos.appendChild(auxPhotos);
     bodyPost.appendChild(photos);
-    
+
     return bodyPost;
 }
 
@@ -338,7 +346,7 @@ function createContainerPhoto(heading, classeDiv, posicao) {
 
 function criarComentario() {
     var comentarioPost = document.createElement("div");
-    comentarioPost.className = "comentario-post";
+    comentarioPost.className = "col-xs-12 col-sm-12 col-md-12 col-lg-12 comentario-post";
     var a = document.createElement("a");
     var icon = document.createElement("span");
     icon.className = "glyphicon glyphicon-comment";
@@ -352,8 +360,11 @@ function criarComentario() {
 
 function criarFooter(post) {
     var footerPost = document.createElement("div");
-    footerPost.className = "footer-post";
-    footerPost.innerHTML = post.descricao;
+    footerPost.className = "col-xs-12 col-sm-12 col-md-12 col-lg-12 footer-post";
+    var content = document.createElement("div");
+    content.innerHTML = post.descricao;
+    content.className = "col-xs-12 col-sm-12 col-md-12 col-lg-12";
+    footerPost.appendChild(content);
     return footerPost;
 }
 
@@ -673,7 +684,7 @@ function showPictureFull(img) {
 }
 
 function getUrlPhoto(heading, latitude, longitude) {
-    var url = "http://maps.googleapis.com/maps/api/streetview?size=600x300";
+    var url = "https://maps.googleapis.com/maps/api/streetview?size=600x300";
     url = url + "&location=" + latitude + ",%20" + longitude;
     url = url + "&heading=" + heading;
     url = url + "&key=AIzaSyAd4OjL_svF-V6cM5JALyM5uNubQRRZPmk";

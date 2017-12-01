@@ -15,6 +15,7 @@
     <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
     <script src="js/database.js"></script>
     <script src="js/google-maps.js"></script>
+    <script src="js/auth.js"></script>
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -34,7 +35,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="time-line.html"><span class="glyphicon glyphicon-time icon-menu-bar"></span></a></li>
-                    <li><a href="login.html"><span class="glyphicon glyphicon-log-out icon-menu-bar"></span></a></li>
+                    <li><a onclick="signOut();"><span class="glyphicon glyphicon-log-out icon-menu-bar"></span></a></li>
                 </ul>
             </div>
         </div>
