@@ -19,7 +19,6 @@ firebase.auth().getRedirectResult().then(function (result) {
     if (result.credential) {
         token = result.credential.accessToken;
     }
-   console.log("firebase.auth().getRedirectResult() Redirecionando Time Line");
 }).catch(function (error) {
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -43,12 +42,10 @@ function redirect(pg, user) {
     console.log(pg + " " + user);
     if (pg != "login.html" && pg != "inscrever.html") {
         if (!user){
-            console.log("Redirecionando Login");
+             window.location = "login.html";
         }
-//            window.location = "login.html";
     } else if (user) {
-//            window.location = "time-line.html";
-            console.log("Redirecionando Time Line");
+            window.location = "time-line.html";
     }
 }
 
@@ -81,8 +78,8 @@ function signInWithFacebook() {
 
 function signOut() {
     firebase.auth().signOut().then(function () {
-        console.log("Redirecionando Login");
+        window.location = "login.html";
     }).catch(function (error) {
-        // enviar mensagem para o usuario
+       
     });
 }
