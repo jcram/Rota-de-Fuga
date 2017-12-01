@@ -12,56 +12,76 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css" />
-    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-    <script src="js/database.js"></script>
-    <script src="js/google-maps.js"></script>
 </head>
 
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="loadMapaDeCalor();">
-
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a id="logo" class="navbar-brand" href="#myPage">
                     <img src="images/logo-rota-de-fuga.png" width="40px" height="auto" style="float:left;position:relative;bottom:10px;"/>
-                    <span style="margin-left:20px;">ROTA DE FUGA</span></a>
+                    <span style="margin-left:20px;">ROTA DE FUGA</span>
+                </a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="apresentation.html"><span class="glyphicon glyphicon-home icon-menu-bar"></span></a></li>
-                    <li class="menu-fui-roubado"><a href="time-line.html">Fui Roubado!</a></li>
-                    <li><a href="inscrever.html">Inscreva-se</a></li>
-                    <li><a href="login.html">Login</a></li>
+                    <li><a href="#services">serviços</a></li>
+                    <li><a href="login.html">login</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <!-- Add Google Maps -->
-    <div id="map"></div>
-    <button id="btn-rota-de-fuga" type="button" class="btn btn-danger" onclick="rotaDeFuga();" data-toggle="modal" data-target="#myModal">!</button>
-    <!-- Modal -->
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Por favor, aguarde...</h4>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div style="width:85%;margin: 0 auto;">
+        <div id="about" class="col-sm-7 text-center" style="background: linear-gradient(141deg, rgba(15, 184, 173,0.2) 0%, rgba(31, 200, 219,0.6) 51%, rgba(44, 181, 232,0.7) 75%);border-radius: 10px;padding:100px;box-shadow: 1px 1px 17px -1px hsla(0, 0%, 63%, .69);border-radius: 10px;margin-bottom: 15px;background-repeat: no-repeat;background-size: 100% 100%;">
+            <h2 style="color:white">Cansado de andar com medo de ser
+                <h2 style="color:#28324a"> roubado?</h2>
+            </h2>
+            <br><br>
+        </div>
+        <div id="services" class="col-sm-4 col-sm-offset-1">
+            <div class="row">
+                <div class="col-sm-12 text-center" style="background-color: white;padding: 0px;margin-bottom: 15px;box-shadow: 1px 1px 17px -1px hsla(0, 0%, 63%, .69);border-radius: 10px;max-height: 125px;height: 125px;">
+                    <div class="col-sm-3" style="background-color:  #c73533;height: 125px;border-radius: 10px;width:30%;display: inline-block;float:left;">
+                        <a href="rota-de-fuga.html"><div style="margin-top:25px;"><span class="glyphicon glyphicon-exclamation-sign" style="color:  white ;font-size: 60px;"></span></div></a>
+                    </div>
+                    <div style="width:69%;display: inline-block;padding:6px;">
+                        <h4>Rota de Fuga</h4>
+                        <p>Encontre o posto policial mais proximo.</p>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <img src="images/loading.gif" width="240px" height="auto" />
+                <br/>
+                <div class="col-sm-12 text-center" style="background-color: white;padding: 0px;margin-bottom: 15px;box-shadow: 1px 1px 17px -1px hsla(0, 0%, 63%, .69);border-radius: 10px;max-height: 125px;height: 125px;">
+                    <div class="col-sm-3" style="background-color:  #00cef6;height: 125px;border-radius: 10px;width:30%;display: inline-block;float:left;">
+                        <div style="margin-top:25px;"><span class="glyphicon glyphicon-fire" style="color:  white;font-size: 60px;"></span></div>
+                    </div>
+                    <div style="width:69%;display: inline-block;padding:6px;">
+                        <h4>Mapa de Calor</h4>
+                        <p>Saiba quais locais sao mais perigosos.</p>
+                    </div>
+                </div>
+                <br/>
+                <div class="col-sm-12 text-center" style="background-color: white;padding: 0px;box-shadow: 1px 1px 17px -1px hsla(0, 0%, 63%, .69);border-radius: 10px;max-height: 125px;height: 125px;">
+                    <div class="col-sm-3" style="background-color:  #3c78d8;height: 125px;border-radius: 10px;width:30%;display: inline-block;float:left;">
+                        <div style="margin-top:25px;"><span class="glyphicon glyphicon-time" style="color:  white ;font-size: 60px;"></span></div>
+                    </div>
+                    <div style="width:69%;display: inline-block;padding:6px;">
+                        <h4>Linha do Tempo</h4>
+                        <p>Visualize ordem cronologica dos roubos.</p>
+                    </div>
                 </div>
             </div>
+            <br><br>
         </div>
     </div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXUmL8jNsy6Z7a-xhsSx_caGVDhaN3aAw&libraries=places&callback=initMap">
-
-
-    </script>
 </body>
 
 </html>

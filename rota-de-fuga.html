@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rota de Fuga</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="images/logo-rota-de-fuga.png">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script src="js/database.js"></script>
+    <script src="js/google-maps.js"></script>
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" onload="loadMapaDeCalor();">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a id="logo" class="navbar-brand" href="#myPage">
+                    <img src="images/logo-rota-de-fuga.png" width="40px" height="auto" style="float:left;position:relative;bottom:10px;"/>
+                    <span style="margin-left:20px;">ROTA DE FUGA</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="index.html"><span class="glyphicon glyphicon-home icon-menu-bar"></span></a></li>
+                    <li class="menu-fui-roubado"><a href="time-line.html">Fui Roubado!</a></li>
+                    <li><a href="inscrever.html">Inscreva-se</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Add Google Maps -->
+    <div id="map"></div>
+    <button id="btn-rota-de-fuga" type="button" class="btn btn-danger" onclick="rotaDeFuga();" data-toggle="modal" data-target="#myModal">!</button>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Por favor, aguarde...</h4>
+                </div>
+                <div class="modal-body">
+                    <img src="images/loading.gif" width="240px" height="auto" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXUmL8jNsy6Z7a-xhsSx_caGVDhaN3aAw&libraries=places&callback=initMap">
+
+
+    </script>
+</body>
+
+</html>
