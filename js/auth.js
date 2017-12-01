@@ -5,8 +5,7 @@ var config = {
     projectId: "rota-de-fuga",
     storageBucket: "rota-de-fuga.appspot.com",
     messagingSenderId: "194503795991"
-  };
-
+};
 firebase.initializeApp(config);
 var usuario;
 var token;
@@ -41,11 +40,11 @@ function extractActualPage() {
 function redirect(pg, user) {
     console.log(pg + " " + user);
     if (pg != "login.html" && pg != "inscrever.html") {
-        if (!user){
-             window.location = "login.html";
+        if (!user) {
+            window.location = "login.html";
         }
     } else if (user) {
-            window.location = "time-line.html";
+        window.location = "time-line.html";
     }
 }
 
@@ -80,6 +79,6 @@ function signOut() {
     firebase.auth().signOut().then(function () {
         window.location = "login.html";
     }).catch(function (error) {
-       
+
     });
 }

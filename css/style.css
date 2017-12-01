@@ -408,7 +408,22 @@ body {
     color: #818181;
 }
 
-h2 {
+div.jumbotron.text-center h2 {
+    font-size: 30px;
+    color: #00cef6;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+div#about h2 {
+    font-size: 30px;
+    color: #00cef6;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+
+h2.title-layout {
     font-size: 30px;
     color: #28324a;
     font-weight: 600;
@@ -424,17 +439,15 @@ h4 {
 }
 
 .jumbotron {
-    background-color: #28324a;
-    color: white;
+    background-color: white;
     padding: 100px 25px;
     font-family: Montserrat, sans-serif;
 }
 
 .container-fluid {
-    padding: 60px 50px;
+    padding: 20px 50px;
     border: 1px solid #e6ecf0;
-    border-radius: 15px;
-    background-color: #f6f6f6;
+    background-color: white;
 }
 
 .logo-small {
