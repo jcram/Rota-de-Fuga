@@ -10,6 +10,10 @@ body {
     background: #e6ecf0;
 }
 
+.pac-container {
+    z-index: 10000 !important;
+}
+
 #btn-rota-de-fuga {
     min-height: 100px;
     min-width: 100px;
@@ -72,11 +76,11 @@ body {
     font-size: 12px;
 }
 
-#modal-menu-search{
+#modal-menu-search {
     display: none;
 }
 
-#modal-menu-search div.modal-content{
+#modal-menu-search div.modal-content {
     min-width: 300px;
     max-width: 350px;
     margin: 60px auto 0px;
@@ -98,7 +102,7 @@ body {
     margin-bottom: 50px;
     cursor: pointer;
     box-shadow: 3px 3px 6px rgba(0, 0, 0, .5);
-    background-color: 
+    background-color:
 }
 
 #btn-pesquisar {
@@ -604,7 +608,7 @@ footer .glyphicon {
         width: 100%;
         margin-bottom: 35px;
     }
-    #btn-modal-search{
+    #btn-modal-search {
         display: block;
     }
 }

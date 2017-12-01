@@ -13,6 +13,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script src="js/auth.js"></script>
     <script src="js/database.js"></script>
     <script src="js/google-maps.js"></script>
 </head>
@@ -93,13 +94,14 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
+                   <a href="#" class="close" style="float:right;" aria-label="close" onclick="$('#modal-menu-search').modal('hide');">&times;</a>
                     <h4 class="modal-title">Pesquisar</h4>
                 </div>
                 <div class="modal-body">
                     <form style="height: 100%;padding: 30px;" action="javascript:pesquisarPostsModal();">
                         <div>
                             <div>
-                                <input id="autocomplete" required class="form-control custom-input" type="text" placeholder="Ex: Savassi...">
+                                <input id="autocomplete-modal" required class="form-control custom-input" type="text" placeholder="Ex: Savassi...">
                             </div>
                             <div style="margin-top:30px;">
                                 <label for="myRange">Raio</label>
@@ -138,6 +140,7 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
+                     <a href="#" class="close" style="float:right;" aria-label="close" onclick="$('#fui-roubado').modal('hide');">&times;</a>
                     <h4 class="modal-title">Fui Roubado...</h4>
                 </div>
                 <div class="modal-body">

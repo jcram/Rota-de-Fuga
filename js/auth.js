@@ -1,10 +1,10 @@
-  var config = {
-    apiKey: "AIzaSyAnZTBIEmUzSixubXQoib5_a2r1LfK9qXg",
-    authDomain: "rota-de-fuga-teste.firebaseapp.com",
-    databaseURL: "https://rota-de-fuga-teste.firebaseio.com",
-    projectId: "rota-de-fuga-teste",
-    storageBucket: "rota-de-fuga-teste.appspot.com",
-    messagingSenderId: "63327819122"
+var config = {
+    apiKey: "AIzaSyC3jg6oX-UNkTfjfttrDpEBocqSK7DmVCg",
+    authDomain: "rota-de-fuga.firebaseapp.com",
+    databaseURL: "https://rota-de-fuga.firebaseio.com",
+    projectId: "rota-de-fuga",
+    storageBucket: "rota-de-fuga.appspot.com",
+    messagingSenderId: "194503795991"
   };
 
 firebase.initializeApp(config);
@@ -19,7 +19,6 @@ firebase.auth().getRedirectResult().then(function (result) {
     if (result.credential) {
         token = result.credential.accessToken;
     }
-   console.log("firebase.auth().getRedirectResult() Redirecionando Time Line");
 }).catch(function (error) {
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -43,12 +42,10 @@ function redirect(pg, user) {
     console.log(pg + " " + user);
     if (pg != "login.html" && pg != "inscrever.html") {
         if (!user){
-            console.log("Redirecionando Login");
+             window.location = "login.html";
         }
-//            window.location = "login.html";
     } else if (user) {
-//            window.location = "time-line.html";
-            console.log("Redirecionando Time Line");
+            window.location = "time-line.html";
     }
 }
 
@@ -81,8 +78,8 @@ function signInWithFacebook() {
 
 function signOut() {
     firebase.auth().signOut().then(function () {
-        console.log("Redirecionando Login");
+        window.location = "login.html";
     }).catch(function (error) {
-        // enviar mensagem para o usuario
+       
     });
 }
